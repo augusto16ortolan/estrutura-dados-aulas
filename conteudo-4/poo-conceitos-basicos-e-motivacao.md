@@ -125,6 +125,30 @@ Na POO, a abstração funciona da mesma forma: o usuário do objeto não precisa
 
 Isso permite que o sistema cresça sem virar algo caótico.
 
+### Outros pilares importantes da POO
+
+Além de classe, objeto e abstração, existem outros conceitos bastante
+associados à POO:
+
+* **encapsulamento**: controlar como o estado interno é acessado e alterado
+* **herança**: reaproveitar características entre classes
+* **polimorfismo**: permitir interfaces parecidas para objetos diferentes
+
+Neste momento do curso, o foco principal está em **abstração e organização do
+código**, mas é importante reconhecer esse vocabulário desde já.
+
+### Encapsulamento na prática
+
+Encapsular significa evitar que qualquer parte do sistema mexa no estado do
+objeto de qualquer jeito. Em vez disso, criamos operações controladas.
+
+Exemplo conceitual:
+
+* em vez de alterar um saldo livremente
+* usamos métodos como `depositar()` e `sacar()`
+
+Assim, o próprio objeto ajuda a preservar regras importantes do problema.
+
 ### Comparação: código sem POO × com POO
 
 #### Sem POO
@@ -172,6 +196,18 @@ A POO ajuda a:
 * isolar mudanças
 * reaproveitar código
 * manter o sistema compreensível ao longo do tempo
+
+### Relação com estruturas de dados
+
+Ao longo da disciplina, várias estruturas serão modeladas como classes:
+
+* `Pilha`
+* `Fila`
+* `ListaEncadeada`
+* `ArvoreBinaria`
+
+Isso mostra que POO não é um tema isolado. Ela será uma ferramenta para
+organizar o estado interno das estruturas e as operações que atuam sobre ele.
 
 ### Conclusão
 

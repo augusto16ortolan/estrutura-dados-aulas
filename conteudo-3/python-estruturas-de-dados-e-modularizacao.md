@@ -117,6 +117,30 @@ Características:
 
 Dicionários são uma ponte natural para POO.
 
+### Como escolher entre estruturas nativas do Python
+
+Uma forma simples de decidir é pensar na operação principal:
+
+* use **lista** quando a ordem importa e você precisa percorrer ou acessar por índice
+* use **tupla** quando os dados não devem mudar
+* use **set** quando a prioridade é testar existência ou remover duplicatas
+* use **dict** quando a consulta principal acontece por chave
+
+Essa escolha já é um primeiro exercício de raciocínio em estrutura de dados.
+
+### Intuição de desempenho nas estruturas nativas
+
+Sem formalizar tudo neste momento, vale observar alguns padrões:
+
+* acessar `lista[i]` costuma ser rápido
+* inserir no fim da lista costuma ser eficiente
+* remover do início da lista pode custar mais
+* consultar uma chave em dicionário tende a ser rápido
+* verificar existência em conjunto costuma ser muito eficiente
+
+Essas observações preparam o terreno para análises mais formais nos próximos
+conteúdos.
+
 ### Percorrendo estruturas de dados
 
 As estruturas de dados normalmente são percorridas com `for`.
@@ -214,6 +238,31 @@ Exemplo de organização:
 * `main.py` → fluxo principal
 * `modelos.py` → classes
 * `utils.py` → funções auxiliares
+
+### Separando responsabilidades
+
+Uma boa modularização evita que um único arquivo faça tudo ao mesmo tempo.
+Normalmente vale separar:
+
+* modelagem dos dados
+* regras de negócio
+* funções utilitárias
+* ponto de entrada do programa
+
+Isso facilita leitura, testes e manutenção.
+
+### O papel do `if __name__ == "__main__"`
+
+Em Python, um arquivo pode ser executado diretamente ou importado por outro.
+Por isso, é comum proteger trechos de teste com:
+
+```python
+if __name__ == "__main__":
+    print(soma(2, 3))
+```
+
+Assim, o código roda quando o arquivo é executado diretamente, mas não é
+executado automaticamente quando o módulo é importado.
 
 ### Modularização e reutilização
 

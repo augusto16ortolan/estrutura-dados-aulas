@@ -10,14 +10,16 @@ description: >-
 
 Nesta parte, a ideia é sair do “conceito” e **ver como a POO aparece no Python**: você cria **classes** (moldes), instancia **objetos** (coisas concretas) e define **métodos** (ações). O ponto principal é que, em POO, a gente tenta manter **dados + comportamentos juntos**, para o código ficar mais organizado e mais fácil de manter.
 
-#### Um paralelo com o que vocês já viram (Pilha e Fila)
+#### Um paralelo com a disciplina
 
-Quando vocês estudaram Pilha e Fila, a estrutura tinha:
+Em POO é muito útil pensar que um objeto possui:
 
-* um **estado interno** (os elementos guardados) e
-* regras que precisam continuar verdadeiras (**invariantes**) Pilha-conteudo
+* um **estado interno** (atributos)
+* um conjunto de **operações** (métodos)
+* e, muitas vezes, **regras** que precisam continuar verdadeiras
 
-Em POO é muito parecido: um **objeto** também tem um **estado interno** (atributos) e regras do domínio (ex.: saldo não pode ficar negativo). Essa forma de pensar ajuda muito a modelar problemas.
+Essa forma de pensar conversa diretamente com estruturas de dados, que também
+possuem estado e invariantes.
 
 ### O que é uma classe em Python
 
@@ -70,25 +72,25 @@ O método `__init__` roda quando você cria um objeto. Ele normalmente define os
 #### Exemplo 1 — Classe simples: Aluno
 
 ```python
-class Student:
-    def __init__(self, name, registration):
-        self.name = name
-        self.registration = registration
+class Aluno:
+    def __init__(self, nome, matricula):
+        self.nome = nome
+        self.matricula = matricula
 
-    def introduce(self):
-        return f"Oi! Eu sou {self.name} e minha matrícula é {self.registration}."
+    def apresentar(self):
+        return f"Oi! Eu sou {self.nome} e minha matrícula é {self.matricula}."
 
 
-s1 = Student("Ana", "2026001")
-s2 = Student("João", "2026002")
+aluno1 = Aluno("Ana", "2026001")
+aluno2 = Aluno("João", "2026002")
 
-print(s1.introduce())
-print(s2.introduce())
+print(aluno1.apresentar())
+print(aluno2.apresentar())
 ```
 
 O que observar:
 
-* `s1` e `s2` são objetos diferentes
+* `aluno1` e `aluno2` são objetos diferentes
 * ambos têm os mesmos “campos” (atributos), mas valores diferentes
 
 ### Um exemplo com “estado + regra”: Conta bancária
@@ -98,33 +100,33 @@ Aqui entra muito a ideia de **invariantes**: por exemplo, “saldo não pode fic
 #### Exemplo 2 — ContaBancaria
 
 ```python
-class BankAccount:
-    def __init__(self, owner, balance=0):
-        self.owner = owner
-        self.balance = balance
+class ContaBancaria:
+    def __init__(self, titular, saldo=0):
+        self.titular = titular
+        self.saldo = saldo
 
-    def deposit(self, amount):
-        if amount <= 0:
-            raise ValueError("Deposit amount must be positive.")
-        self.balance += amount
+    def depositar(self, valor):
+        if valor <= 0:
+            raise ValueError("O valor do deposito deve ser positivo.")
+        self.saldo += valor
 
-    def withdraw(self, amount):
-        if amount <= 0:
-            raise ValueError("Withdraw amount must be positive.")
-        if amount > self.balance:
-            raise ValueError("Insufficient funds.")
-        self.balance -= amount
+    def sacar(self, valor):
+        if valor <= 0:
+            raise ValueError("O valor do saque deve ser positivo.")
+        if valor > self.saldo:
+            raise ValueError("Saldo insuficiente.")
+        self.saldo -= valor
 
-    def get_balance(self):
-        return self.balance
+    def consultar_saldo(self):
+        return self.saldo
 
 
-acc = BankAccount("Maria", 100)
-acc.deposit(50)
-acc.withdraw(30)
+conta = ContaBancaria("Maria", 100)
+conta.depositar(50)
+conta.sacar(30)
 
-print("Owner:", acc.owner)
-print("Balance:", acc.get_balance())
+print("Titular:", conta.titular)
+print("Saldo:", conta.consultar_saldo())
 ```
 
 Pontos didáticos:
@@ -140,74 +142,97 @@ Aqui entendemos que objeto guarda dados e “sabe operar” sobre eles.
 #### Exemplo 3 — Produto
 
 ```python
-class Product:
-    def __init__(self, name, price):
-        self.name = name
-        self.price = price
+class Produto:
+    def __init__(self, nome, preco):
+        self.nome = nome
+        self.preco = preco
 
-    def apply_discount(self, percent):
-        if percent < 0 or percent > 100:
-            raise ValueError("Percent must be between 0 and 100.")
-        self.price = self.price * (1 - percent / 100)
+    def aplicar_desconto(self, percentual):
+        if percentual < 0 or percentual > 100:
+            raise ValueError("O percentual deve estar entre 0 e 100.")
+        self.preco = self.preco * (1 - percentual / 100)
 
-    def describe(self):
-        return f"{self.name} costs R$ {self.price:.2f}"
+    def descrever(self):
+        return f"{self.nome} custa R$ {self.preco:.2f}"
 
 
-p = Product("Headphone", 200)
-print(p.describe())
+produto = Produto("Headphone", 200)
+print(produto.descrever())
 
-p.apply_discount(10)
-print(p.describe())
+produto.aplicar_desconto(10)
+print(produto.descrever())
 ```
 
 ### Exemplo com lista dentro do objeto: Carrinho de compras
 
 Aqui vemos um objeto que “por dentro” tem uma lista e métodos para mexer nela.
 
-#### Exemplo 4 — ShoppingCart
+#### Exemplo 4 — CarrinhoDeCompras
 
 ```python
-class ShoppingCart:
+class CarrinhoDeCompras:
     def __init__(self):
-        self.items = []  # state: list of prices
+        self.itens = []
 
-    def add(self, price):
-        if price <= 0:
-            raise ValueError("Price must be positive.")
-        self.items.append(price)
+    def adicionar(self, preco):
+        if preco <= 0:
+            raise ValueError("O preco deve ser positivo.")
+        self.itens.append(preco)
 
     def total(self):
-        return sum(self.items)
+        return sum(self.itens)
 
-    def count(self):
-        return len(self.items)
+    def quantidade(self):
+        return len(self.itens)
 
 
-cart = ShoppingCart()
-cart.add(10)
-cart.add(25)
-cart.add(5)
+carrinho = CarrinhoDeCompras()
+carrinho.adicionar(10)
+carrinho.adicionar(25)
+carrinho.adicionar(5)
 
-print("Items:", cart.count())
-print("Total:", cart.total())
+print("Itens:", carrinho.quantidade())
+print("Total:", carrinho.total())
 ```
 
 ### Ligando diretamente com Pilha e Fila
 
 Você já trabalhou com classes `Pilha` e `Fila`. Elas são exemplos perfeitos de POO:
 
-* estado interno: `self._itens`
-* métodos: `push/pop/peek` ou `enqueue/dequeue/front` Pilha-conteudo Fila-conteudo
-* e dá até para discutir “regras” e “pré/pós-condições” como vocês fizeram nas operações de fila Fila-conteudo
+* estado interno: por exemplo, `self._itens`
+* métodos: como `push()`, `pop()`, `enqueue()` ou `dequeue()`
+* regras: por exemplo, não remover elemento de uma estrutura vazia
 
 Isso ajuda a perceber que POO não é “algo separado”: é só uma forma de **organizar o código**.
+
+### Um primeiro olhar para encapsulamento em Python
+
+Em Python, é comum usar um sublinhado no nome do atributo para indicar que ele
+é de uso interno:
+
+```python
+class Pilha:
+    def __init__(self):
+        self._itens = []
+```
+
+Esse sublinhado não impede tecnicamente o acesso, mas comunica a intenção de
+que o ideal é interagir com o objeto pelos métodos.
+
+### Quando faz sentido criar uma classe
+
+Criar uma classe costuma fazer sentido quando:
+
+* existe um estado que precisa ser preservado
+* há várias operações relacionadas sobre esse estado
+* o problema representa uma entidade clara
+* queremos evitar dados e funções soltas
 
 ### Erros comuns de quem está começando
 
 1. Esquecer o `self` dentro dos métodos
 2. Confundir classe com objeto
-   * `Student` (classe) vs `s1 = Student(...)` (objeto)
+   * `Aluno` (classe) vs `aluno1 = Aluno(...)` (objeto)
 3. Criar atributos fora do `__init__` sem querer (bagunça o estado)
 4. Não pensar nas regras do domínio (ex.: permitir saldo negativo sem querer)
 

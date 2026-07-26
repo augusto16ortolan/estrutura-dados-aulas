@@ -62,6 +62,21 @@ Pós: retorna o elemento do início sem removê-lo
 Pré: nenhuma\
 Pós: retorna verdadeiro se a fila não possui elementos
 
+### Complexidade e observação importante
+
+Em uma fila ideal, as operações principais devem ser eficientes:
+
+* `enqueue()`
+* `dequeue()`
+* `front()`
+
+No entanto, ao implementar fila com uma lista comum do Python e usar `pop(0)`,
+a remoção do primeiro elemento pode custar mais, porque os demais elementos
+precisam ser reorganizados.
+
+Por isso, em aplicações mais reais, costuma ser melhor usar estruturas pensadas
+para fila, como `collections.deque`.
+
 ### Exemplo de classe Fila em Python
 
 ```python
@@ -93,6 +108,24 @@ class Fila:
         """Retorna a quantidade de itens na fila."""
         return len(self._itens)
 ```
+
+### Implementação mais adequada em Python
+
+Uma alternativa mais eficiente para filas no Python é:
+
+```python
+from collections import deque
+
+fila = deque()
+fila.append(10)
+fila.append(20)
+primeiro = fila.popleft()
+```
+
+Isso é útil para mostrar que:
+
+* o conceito da estrutura é uma coisa
+* a implementação concreta pode ser melhor ou pior
 
 #### Exemplo de uso
 
@@ -137,6 +170,27 @@ Repara que:
 Ou seja, **na fila não importa quem chegou por último, e sim quem chegou primeiro**.
 
 > “Em fila, quem chega primeiro é sempre o primeiro a sair.”
+
+### Variações importantes de fila
+
+Além da fila simples, existem outras variações muito usadas:
+
+* **fila circular**
+* **fila com prioridade**
+* **deque** (fila de duas pontas)
+
+Elas preservam parte da ideia de fila, mas ajustam o comportamento para
+problemas específicos.
+
+### Onde filas aparecem na prática
+
+Filas são muito comuns em computação:
+
+* escalonamento de tarefas
+* filas de impressão
+* sistemas de mensagens
+* processamento de eventos
+* atendimento concorrente em servidores
 
 ### Conclusão
 

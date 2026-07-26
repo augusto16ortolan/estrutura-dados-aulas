@@ -53,6 +53,20 @@ As operações mais comuns são:
 
 Cada uma dessas operações tem um impacto diferente no desempenho.
 
+### Estado mínimo da estrutura
+
+Na forma mais simples, a lista precisa manter pelo menos:
+
+* uma referência para o primeiro nodo (`head`)
+
+Em algumas implementações, também pode existir:
+
+* uma referência para o último nodo (`tail`)
+* um contador de tamanho
+
+Esses elementos extras não mudam o conceito da estrutura, mas podem tornar
+algumas operações mais eficientes.
+
 ### Inserção de elementos
 
 #### Inserção no início da lista
@@ -68,6 +82,19 @@ head = novo
 ```
 
 Essa operação é eficiente porque **não depende do tamanho da lista**.
+
+#### Inserção após um nodo conhecido
+
+Se já temos referência para um nodo específico, inserir logo depois dele também
+pode ser simples:
+
+```python
+novo.proximo = atual.proximo
+atual.proximo = novo
+```
+
+Esse exemplo mostra que, em listas encadeadas, o custo depende muito do que já
+conhecemos da estrutura naquele momento.
 
 #### Inserção no final da lista
 
@@ -158,6 +185,13 @@ lista.imprimir()
 * Buscar um elemento: precisa percorrer a lista
 * Acessar um elemento específico: **não é direto**
 
+Uma forma mais formal de resumir:
+
+* inserção no início → `O(1)`
+* remoção no início → `O(1)`
+* busca → `O(n)`
+* acesso por posição → `O(n)`
+
 Ou seja, listas simplesmente encadeadas são boas quando:
 
 * há muitas inserções e remoções
@@ -166,6 +200,20 @@ Ou seja, listas simplesmente encadeadas são boas quando:
 E não são ideais quando:
 
 * é necessário acessar elementos aleatórios com frequência
+
+### Vantagens e limitações
+
+**Vantagens:**
+
+* cresce dinamicamente
+* inserção no início é muito eficiente
+* boa base para outras estruturas
+
+**Limitações:**
+
+* acesso é sequencial
+* remoções no meio exigem localizar o nodo anterior
+* depuração pode ser mais difícil quando referências são ajustadas incorretamente
 
 ### Comparação intuitiva com listas comuns
 

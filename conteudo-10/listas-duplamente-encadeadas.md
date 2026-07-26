@@ -45,6 +45,16 @@ Diferente da lista simplesmente encadeada, aqui cada nodo “sabe”:
 
 Essa característica torna a lista duplamente encadeada mais poderosa, porém mais custosa em termos de memória.
 
+### Estado típico da estrutura
+
+Em muitas implementações, a lista duplamente encadeada mantém:
+
+* `head` para o início
+* `tail` para o final
+
+Com isso, operações nas extremidades ficam mais eficientes e o percurso pode
+começar pelo lado mais conveniente.
+
 ### Operações básicas em listas duplamente encadeadas
 
 As operações principais são semelhantes às da lista simplesmente encadeada, mas envolvem **mais ajustes de referências**.
@@ -85,6 +95,23 @@ Quando existe uma referência para o final da lista (tail), essa operação tamb
 * O nodo seguinte passa a apontar para o anterior
 
 Por possuir referência dupla, **não é necessário percorrer a lista para encontrar o nodo anterior**, o que facilita essas operações.
+
+### Complexidade típica
+
+Quando já temos a referência do nodo certo:
+
+* inserção ou remoção no início → `O(1)`
+* inserção ou remoção no final (com `tail`) → `O(1)`
+* ajuste no meio → `O(1)` para religar os vizinhos
+
+Mas ainda existe um detalhe importante:
+
+* **encontrar** o nodo no meio da lista continua podendo exigir percurso
+
+Ou seja, muitas vezes o custo total depende de duas etapas:
+
+* localizar o ponto de interesse
+* ajustar as referências
 
 ### Percorrendo a lista
 
@@ -138,14 +165,32 @@ class Nodo:
 class ListaDuplamenteEncadeada:
     def __init__(self):
         self.head = None
+        self.tail = None
 
     def inserir_inicio(self, valor):
         novo = Nodo(valor)
-        if self.head is not None:
+        if self.head is None:
+            self.head = novo
+            self.tail = novo
+        else:
             self.head.anterior = novo
             novo.proximo = self.head
-        self.head = novo
+            self.head = novo
 ```
+
+### Quando faz sentido usar essa estrutura
+
+Listas duplamente encadeadas costumam valer a pena quando:
+
+* a navegação precisa acontecer nos dois sentidos
+* inserções e remoções nas extremidades são frequentes
+* o custo extra de memória é aceitável
+
+Exemplos comuns:
+
+* histórico de navegação
+* playlists com próximo e anterior
+* editores com navegação entre estados
 
 ### A importância das referências duplas
 

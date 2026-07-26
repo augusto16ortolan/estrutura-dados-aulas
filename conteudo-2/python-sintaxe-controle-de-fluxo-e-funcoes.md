@@ -167,6 +167,39 @@ for n in numeros:
     print(n)
 ```
 
+Além de percorrer, listas permitem:
+
+* acessar por índice
+* alterar valores
+* fatiar partes com `lista[inicio:fim]`
+* crescer e diminuir dinamicamente
+
+Exemplo:
+
+```python
+valores = [10, 20, 30, 40, 50]
+print(valores[1:4])  # [20, 30, 40]
+```
+
+Esse tipo de operação aparece com frequência em exercícios de busca, ordenação
+e manipulação de sequências.
+
+### Mutabilidade e cuidado com referências
+
+Listas são **mutáveis**, isto é, podem ser alteradas depois de criadas.
+
+```python
+dados = [1, 2, 3]
+referencia = dados
+
+referencia.append(4)
+print(dados)  # [1, 2, 3, 4]
+```
+
+Isso é importante porque, em estruturas de dados, duas variáveis diferentes nem
+sempre representam duas estruturas diferentes. Às vezes elas apontam para o
+mesmo objeto.
+
 ### Funções em Python
 
 Funções permitem **reutilizar código** e **organizar melhor o programa**.
@@ -208,6 +241,18 @@ apresentar("João")
 apresentar("Maria", "Engenharia")
 ```
 
+### Funções como ferramenta de abstração
+
+Uma função bem definida ajuda a:
+
+* separar responsabilidades
+* reduzir repetição
+* esconder detalhes internos
+* facilitar testes e manutenção
+
+Por isso, ao implementar estruturas de dados, é comum quebrar o problema em
+operações menores, como inserir, remover, buscar, percorrer e validar.
+
 ### Escopo de variáveis
 
 * Variáveis criadas **dentro da função** existem apenas nela
@@ -228,6 +273,7 @@ teste()
 * Mantenha indentação consistente
 * Evite funções muito grandes
 * Comente quando necessário (sem exagero)
+* Teste casos pequenos antes de testar casos maiores
 
 ### Relação com os próximos conteúdos
 

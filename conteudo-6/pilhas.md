@@ -67,6 +67,29 @@ Em teoria, a gente descreve operações com:
 * Pré: nenhuma
 * Pós: retorna verdadeiro se não há elementos
 
+### Complexidade das operações
+
+Quando a pilha é implementada de forma adequada, as operações principais
+costumam ter custo constante:
+
+* `push()` → `O(1)`
+* `pop()` → `O(1)`
+* `peek()` → `O(1)`
+
+Isso acontece porque todas agem sobre o topo, sem precisar percorrer a
+estrutura inteira.
+
+### Possíveis implementações
+
+Uma pilha pode ser implementada de diferentes formas:
+
+* com lista do Python
+* com lista encadeada
+* com vetor em outras linguagens
+
+Independentemente da implementação, a estrutura continua sendo pilha se
+mantiver a regra LIFO e o acesso controlado pelo topo.
+
 ### Exemplo de classe Pilha em Python
 
 ```python
@@ -110,6 +133,27 @@ print("Saiu:", p.pop())        # 30
 print("Tamanho:", p.size())    # 2
 print("Vazia?", p.is_empty())  # False
 ```
+
+### Aplicações clássicas de pilha na computação
+
+Além dos exemplos do cotidiano, pilhas aparecem muito em problemas reais:
+
+* controle de chamadas de função
+* processamento de expressões matemáticas
+* verificação de parênteses e delimitadores
+* mecanismo de desfazer e refazer
+* algoritmos de backtracking
+
+Em outras palavras, pilha aparece sempre que precisamos “voltar um passo” ou
+recuperar a última decisão tomada.
+
+### Limitações e cuidados
+
+Pilha é excelente quando o problema combina com LIFO, mas não é ideal quando:
+
+* precisamos acessar elementos do meio com frequência
+* queremos remover um item arbitrário
+* a ordem natural do problema não é a ordem inversa de inserção
 
 Numa pilha, **a ordem das operações é tudo**. Como você sempre coloca e tira itens **pelo topo**, o que está no topo em cada momento depende exatamente do que você fez antes.
 

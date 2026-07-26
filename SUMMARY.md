@@ -72,3 +72,9 @@
 * [Busca binária](conteudo-12/busca-binaria.md)
 * [Exercícios práticos](conteudo-12/exercicios-praticos.md)
 * [Atividades](conteudo-12/atividades.md)
+
+## 💻 CONTEÚDO 13
+
+* [Árvores binárias](conteudo-13/arvores-binarias.md)
+* [Exercícios práticos](conteudo-13/exercicios-praticos.md)
+* [Atividades](conteudo-13/atividades.md)

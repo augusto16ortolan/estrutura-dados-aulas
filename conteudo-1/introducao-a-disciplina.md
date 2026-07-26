@@ -84,6 +84,40 @@ Outro tema central será a **eficiência**:
 
 Essas análises são fundamentais para projetar sistemas escaláveis e eficientes, especialmente em cenários reais com grandes volumes de dados.
 
+Mesmo antes de formalizar notações como `O(n)` e `O(log n)`, vale construir a
+intuição correta:
+
+* algumas soluções pioram pouco quando os dados crescem
+* outras pioram muito rapidamente
+* duas soluções corretas podem ter custos muito diferentes
+
+Essa sensibilidade para custo computacional será desenvolvida ao longo de toda a
+disciplina.
+
+### Perguntas que ajudam a escolher uma estrutura
+
+Em muitos problemas, a escolha da estrutura começa com perguntas simples:
+
+* Os dados precisam ficar em sequência ou em hierarquia?
+* A operação mais importante é inserir, remover, buscar ou percorrer?
+* O acesso precisa ser rápido por posição?
+* Faz sentido gastar mais memória para ganhar velocidade?
+* Os dados mudam o tempo todo ou ficam mais estáticos?
+
+Essas perguntas ajudam a sair da lógica de “usar a estrutura que eu lembro” e
+entrar na lógica de “usar a estrutura adequada ao problema”.
+
+### Conectando conceito, implementação e análise
+
+Ao longo da disciplina, cada tema será observado em três camadas:
+
+* **conceito**: o que a estrutura representa
+* **implementação**: como ela pode ser construída em Python
+* **análise**: por que ela é mais ou menos adequada para determinado cenário
+
+Esse ciclo será repetido várias vezes porque é assim que o raciocínio em
+Estrutura de Dados se consolida.
+
 ### Desenvolvendo o raciocínio de programador
 
 Ao estudar estruturas de dados, o aluno deve sempre se perguntar:

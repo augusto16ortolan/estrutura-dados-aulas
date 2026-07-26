@@ -64,6 +64,18 @@ Apesar das diferenças, todos os algoritmos de ordenação:
 
 O que muda entre eles é **a estratégia usada para fazer isso**.
 
+### Critérios para comparar algoritmos de ordenação
+
+Ao estudar ordenação, não basta perguntar “funciona?”.
+Também vale comparar:
+
+* quantas comparações o algoritmo realiza
+* quantas trocas ou deslocamentos acontecem
+* como ele se comporta com listas pequenas ou quase ordenadas
+* se ele preserva ou não a ordem relativa de elementos iguais
+
+Esses critérios ajudam a construir maturidade algorítmica.
+
 ### Bubble Sort
 
 #### Funcionamento
@@ -90,10 +102,17 @@ Esse processo se repete até que não seja mais necessário trocar ninguém.
 def bubble_sort(lista):
     n = len(lista)
     for i in range(n):
+        houve_troca = False
         for j in range(0, n - i - 1):
             if lista[j] > lista[j + 1]:
                 lista[j], lista[j + 1] = lista[j + 1], lista[j]
+                houve_troca = True
+        if not houve_troca:
+            break
 ```
+
+Essa pequena otimização faz o algoritmo parar antes se a lista já estiver
+ordenada.
 
 ### Selection Sort
 
@@ -159,6 +178,36 @@ def insertion_sort(lista):
             j -= 1
         lista[j + 1] = atual
 ```
+
+### Comparação de desempenho
+
+De forma introdutória, podemos resumir assim:
+
+* **Bubble Sort**: simples, mas costuma fazer muitas comparações e trocas
+* **Selection Sort**: reduz o número de trocas, mas ainda percorre bastante a lista
+* **Insertion Sort**: costuma se sair melhor quando os dados já estão parcialmente ordenados
+
+Na análise assintótica clássica:
+
+* Bubble Sort → `O(n²)` no pior caso
+* Selection Sort → `O(n²)` no pior caso
+* Insertion Sort → `O(n²)` no pior caso, mas pode se aproximar de `O(n)` em cenários favoráveis
+
+### Estabilidade de ordenação
+
+Outro conceito útil é a **estabilidade**.
+Um algoritmo estável preserva a ordem relativa de elementos iguais.
+
+Isso pode ser importante quando:
+
+* os dados possuem mais de um critério de ordenação
+* dois elementos têm a mesma chave principal
+
+De forma geral:
+
+* Bubble Sort pode ser estável
+* Insertion Sort pode ser estável
+* Selection Sort geralmente não é estável na forma mais simples
 
 ### Comparação conceitual entre os algoritmos
 

@@ -48,6 +48,19 @@ Isso muda completamente a forma de pensar a estrutura:
 * Você não “pula” direto para uma posição
 * Você percorre a lista, nodo por nodo
 
+### Diferença entre valor e referência
+
+Esse é um ponto conceitual muito importante:
+
+* o **valor** é a informação útil do nodo
+* a **referência** é a ligação que mantém a estrutura conectada
+
+Se o valor muda, o conteúdo do nodo muda.
+Se a referência muda, a organização da estrutura pode mudar.
+
+Por isso, ao estudar nodos, não estamos lidando apenas com dados, mas também
+com **relações entre dados**.
+
 ### Exemplos de listas lineares no mundo real
 
 * **Fila de pessoas**: cada pessoa sabe quem está logo atrás dela.
@@ -121,6 +134,19 @@ Visualmente, isso representa:
 
 Cada nodo guarda seu valor e sabe quem vem depois dele.
 
+### Relação com memória e acesso
+
+Em estruturas baseadas em vetor, normalmente imaginamos elementos em posições
+contíguas e acessíveis por índice. Em estruturas baseadas em nodos, a lógica é
+diferente:
+
+* cada nodo pode estar em uma região distinta de memória
+* o acesso acontece seguindo referências
+* o custo de percorrer cresce com o número de nodos visitados
+
+Essa diferença prepara o terreno para entender por que listas encadeadas têm
+vantagens em algumas operações e limitações em outras.
+
 ### A importância da ordem em listas lineares
 
 Em listas lineares, **a ordem dos nodos define completamente a estrutura**.\
@@ -133,6 +159,15 @@ Por isso, operações como inserir ou remover exigem cuidado:
 * Parte da lista pode ser perdida
 
 > “Em listas encadeadas, o que mantém a estrutura viva são as ligações entre os nodos.”
+
+### Preparação para o próximo passo
+
+Ao dominar nodos, o aluno já tem a base para compreender:
+
+* listas simplesmente encadeadas
+* listas duplamente encadeadas
+* pilhas e filas implementadas com encadeamento
+* árvores, em que um nodo pode apontar para mais de um próximo elemento
 
 ### Conclusão
 
