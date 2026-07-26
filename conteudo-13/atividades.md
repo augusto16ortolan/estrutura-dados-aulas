@@ -6,6 +6,8 @@ description: >-
 
 # Atividades
 
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+
 ## Questões de estudo
 
 1. O que caracteriza uma árvore binária e por que ela é considerada uma estrutura não linear?

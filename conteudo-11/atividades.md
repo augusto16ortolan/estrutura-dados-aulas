@@ -16,5 +16,5 @@ description: >-
 4. Descreva, com suas próprias palavras, como funciona o algoritmo Bubble Sort.
 5. Explique a ideia principal do Selection Sort e como ele escolhe o elemento que será colocado na próxima posição correta.
 6. Descreva o funcionamento do Insertion Sort utilizando um exemplo do dia a dia.
-7. Quais são as principais diferenças conceituais entre Bubble Sort, Selection Sort e Insertion Sort?
-8. Por que entender algoritmos de ordenação simples é importante antes de estudar algoritmos mais eficientes?
+7. Explique a ideia geral do Merge Sort e por que ele é associado à estratégia de divisão e conquista.
+8. Quais são as principais diferenças conceituais entre Bubble Sort, Selection Sort, Insertion Sort e Merge Sort?

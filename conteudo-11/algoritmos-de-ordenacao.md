@@ -45,13 +45,25 @@ Em muitos casos, **ordenar os dados é o primeiro passo antes de processá-los**
 
 Existem diversos algoritmos de ordenação, mas neste momento do curso o foco está nos algoritmos **mais simples**, que ajudam a desenvolver o raciocínio lógico.
 
-Os principais algoritmos estudados aqui são:
+Os principais algoritmos apresentados aqui são:
 
 * Bubble Sort
 * Selection Sort
 * Insertion Sort
+* Merge Sort
 
-Esses algoritmos não são os mais rápidos, mas são excelentes para **entender o funcionamento da ordenação**.
+Os três primeiros são especialmente úteis para construir intuição, porque
+mostram estratégias simples de comparação e reorganização de elementos.
+Já o **Merge Sort** amplia o repertório ao introduzir uma abordagem mais
+eficiente baseada em **divisão e conquista**.
+
+Em outras palavras:
+
+* **Bubble Sort, Selection Sort e Insertion Sort** são ótimos para ensino e raciocínio inicial
+* **Merge Sort** é importante para mostrar como surgem algoritmos mais sofisticados e eficientes
+
+Mesmo que nem todos sejam trabalhados com o mesmo nível de profundidade em aula,
+é valioso que o aluno conheça o panorama.
 
 ### Ideia geral dos algoritmos de ordenação
 
@@ -63,6 +75,11 @@ Apesar das diferenças, todos os algoritmos de ordenação:
 * repetem o processo até que a lista esteja ordenada
 
 O que muda entre eles é **a estratégia usada para fazer isso**.
+
+Vale observar que nem todo algoritmo de ordenação trabalha apenas trocando
+elementos vizinhos ou escolhendo posições locais. Alguns, como o Merge Sort,
+primeiro **quebram o problema em partes menores** para só depois reconstruir a
+lista ordenada.
 
 ### Critérios para comparar algoritmos de ordenação
 
@@ -179,6 +196,125 @@ def insertion_sort(lista):
         lista[j + 1] = atual
 ```
 
+### Merge Sort
+
+#### Funcionamento
+
+O **Merge Sort** segue a ideia de **dividir para conquistar**:
+
+1. divide a lista em duas metades
+2. ordena cada metade separadamente
+3. intercala as duas metades ordenadas em uma única lista final
+
+Em vez de ir resolvendo o problema apenas com trocas locais, ele quebra o
+problema original em subproblemas menores, resolve esses subproblemas e depois
+combina os resultados.
+
+#### Exemplo conceitual
+
+Imagine a lista:
+
+```text
+[8, 3, 5, 1, 7, 2]
+```
+
+O Merge Sort faz algo assim:
+
+```text
+[8, 3, 5, 1, 7, 2]
+-> divide em [8, 3, 5] e [1, 7, 2]
+-> divide novamente até sobrar listas com 1 elemento
+-> intercala as partes em ordem
+-> resultado final: [1, 2, 3, 5, 7, 8]
+```
+
+A ideia importante é:
+
+* listas de 1 elemento já estão ordenadas
+* o trabalho pesado passa a ser **intercalar corretamente** duas partes já ordenadas
+
+#### Intercalação (merge)
+
+A etapa de **merge** compara os primeiros elementos de duas listas ordenadas e
+vai escolhendo o menor deles até formar uma nova sequência ordenada.
+
+Exemplo:
+
+```text
+[3, 8] e [1, 5, 7]
+```
+
+Intercalando:
+
+```text
+[1, 3, 5, 7, 8]
+```
+
+Essa etapa é o coração do algoritmo.
+
+#### Exemplo em Python
+
+```python
+def merge_sort(lista):
+    if len(lista) <= 1:
+        return lista
+
+    meio = len(lista) // 2
+    esquerda = merge_sort(lista[:meio])
+    direita = merge_sort(lista[meio:])
+
+    return merge(esquerda, direita)
+
+
+def merge(esquerda, direita):
+    resultado = []
+    i = 0
+    j = 0
+
+    while i < len(esquerda) and j < len(direita):
+        if esquerda[i] <= direita[j]:
+            resultado.append(esquerda[i])
+            i += 1
+        else:
+            resultado.append(direita[j])
+            j += 1
+
+    resultado.extend(esquerda[i:])
+    resultado.extend(direita[j:])
+    return resultado
+```
+
+Esse exemplo retorna uma **nova lista ordenada**, em vez de modificar a lista
+original diretamente.
+
+#### Intuição de desempenho
+
+O grande diferencial do Merge Sort é que ele mantém um desempenho mais estável
+em listas maiores.
+
+De forma clássica:
+
+* divide a lista em partes menores repetidamente
+* realiza intercalações lineares em cada nível da divisão
+* alcança complexidade `O(n log n)`
+
+Isso faz dele um salto importante em relação aos algoritmos quadráticos
+apresentados antes.
+
+#### Vantagens e limitações
+
+**Vantagens:**
+
+* desempenho melhor em comparação com Bubble, Selection e Insertion em muitos cenários
+* estratégia elegante e muito importante na formação algorítmica
+* pode ser estável
+
+**Limitações:**
+
+* a implementação é um pouco mais abstrata para iniciantes
+* costuma exigir memória extra para a intercalação
+* pode ser menos intuitivo em uma primeira aula do que os algoritmos mais simples
+
 ### Comparação de desempenho
 
 De forma introdutória, podemos resumir assim:
@@ -186,12 +322,14 @@ De forma introdutória, podemos resumir assim:
 * **Bubble Sort**: simples, mas costuma fazer muitas comparações e trocas
 * **Selection Sort**: reduz o número de trocas, mas ainda percorre bastante a lista
 * **Insertion Sort**: costuma se sair melhor quando os dados já estão parcialmente ordenados
+* **Merge Sort**: usa divisão e conquista e mantém desempenho melhor em listas maiores
 
 Na análise assintótica clássica:
 
 * Bubble Sort → `O(n²)` no pior caso
 * Selection Sort → `O(n²)` no pior caso
 * Insertion Sort → `O(n²)` no pior caso, mas pode se aproximar de `O(n)` em cenários favoráveis
+* Merge Sort → `O(n log n)` no pior caso
 
 ### Estabilidade de ordenação
 
@@ -208,6 +346,7 @@ De forma geral:
 * Bubble Sort pode ser estável
 * Insertion Sort pode ser estável
 * Selection Sort geralmente não é estável na forma mais simples
+* Merge Sort pode ser estável, dependendo da implementação da intercalação
 
 ### Comparação conceitual entre os algoritmos
 
@@ -217,8 +356,20 @@ De forma geral:
   Seleciona o menor elemento da parte não ordenada.
 * **Insertion Sort**\
   Insere cada elemento na posição correta dentro da parte já ordenada.
+* **Merge Sort**\
+  Divide a lista em partes menores, ordena essas partes e depois intercala os resultados.
 
 Todos resolvem o mesmo problema, mas de formas diferentes.
+
+### Sugestão pedagógica de leitura do tema
+
+Em uma sequência de aula, é perfeitamente razoável:
+
+* trabalhar **Bubble Sort, Selection Sort e Insertion Sort** como núcleo principal
+* apresentar **Merge Sort** como expansão de repertório e ponte para algoritmos mais eficientes
+
+Assim, o aluno entende tanto as estratégias mais concretas quanto a transição
+para soluções mais sofisticadas.
 
 ### Relação com estruturas de dados
 
@@ -231,4 +382,10 @@ Por isso, entender bem pilhas, filas e listas é essencial para compreender orde
 
 ### Conclusão
 
-Os algoritmos de ordenação são fundamentais para organizar dados e permitir operações mais eficientes sobre eles. Ao estudar Bubble Sort, Selection Sort e Insertion Sort, o aluno desenvolve o raciocínio lógico necessário para comparar estratégias, entender diferentes formas de resolver o mesmo problema e perceber como escolhas algorítmicas impactam o desempenho de um sistema. Esse conhecimento serve como base para o estudo de algoritmos mais eficientes e para a compreensão de conceitos avançados da computação.
+Os algoritmos de ordenação são fundamentais para organizar dados e permitir
+operações mais eficientes sobre eles. Ao estudar Bubble Sort, Selection Sort,
+Insertion Sort e Merge Sort, o aluno desenvolve o raciocínio necessário para
+comparar estratégias, perceber custos diferentes e entender como a ideia de
+divisão e conquista amplia o repertório algorítmico. Esse conhecimento serve
+como base para o estudo de algoritmos ainda mais eficientes e para a
+compreensão de conceitos avançados da computação.
