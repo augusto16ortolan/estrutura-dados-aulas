@@ -18,7 +18,7 @@ A principal ideia da POO é tornar o código:
 * mais próximo da forma como pensamos problemas reais
 * mais simples de manter e evoluir
 
-<figure><img src="../.gitbook/assets/image (26).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (25).png" alt="" width="563"><figcaption></figcaption></figure>
 
 ### Por que surgiu a Programação Orientada a Objetos
 
@@ -127,20 +127,17 @@ Isso permite que o sistema cresça sem virar algo caótico.
 
 ### Outros pilares importantes da POO
 
-Além de classe, objeto e abstração, existem outros conceitos bastante
-associados à POO:
+Além de classe, objeto e abstração, existem outros conceitos bastante associados à POO:
 
 * **encapsulamento**: controlar como o estado interno é acessado e alterado
 * **herança**: reaproveitar características entre classes
 * **polimorfismo**: permitir interfaces parecidas para objetos diferentes
 
-Neste momento do curso, o foco principal está em **abstração e organização do
-código**, mas é importante reconhecer esse vocabulário desde já.
+Neste momento do curso, o foco principal está em **abstração e organização do código**, mas é importante reconhecer esse vocabulário desde já.
 
 ### Encapsulamento na prática
 
-Encapsular significa evitar que qualquer parte do sistema mexa no estado do
-objeto de qualquer jeito. Em vez disso, criamos operações controladas.
+Encapsular significa evitar que qualquer parte do sistema mexa no estado do objeto de qualquer jeito. Em vez disso, criamos operações controladas.
 
 Exemplo conceitual:
 
@@ -206,8 +203,7 @@ Ao longo da disciplina, várias estruturas serão modeladas como classes:
 * `ListaEncadeada`
 * `ArvoreBinaria`
 
-Isso mostra que POO não é um tema isolado. Ela será uma ferramenta para
-organizar o estado interno das estruturas e as operações que atuam sobre ele.
+Isso mostra que POO não é um tema isolado. Ela será uma ferramenta para organizar o estado interno das estruturas e as operações que atuam sobre ele.
 
 ### Conclusão
 
