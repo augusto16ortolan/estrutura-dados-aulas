@@ -201,6 +201,62 @@ Ela é muito usada em:
 * tabelas indexadas
 * algoritmos que precisam testar rapidamente se um valor existe
 
+## Onde busca binária aparece na prática
+
+A busca binária aparece sempre que temos dados **ordenados** e precisamos
+localizar informações rapidamente.
+
+Alguns exemplos:
+
+* **catálogo de produtos por código**: encontrar rapidamente um produto em uma
+  lista de códigos ordenados
+* **lista de alunos por matrícula**: localizar uma matrícula sem percorrer todos
+  os registros
+* **agenda ordenada por horário**: verificar se já existe um evento em certo
+  horário
+* **sistemas de estoque**: procurar um item por identificador em uma tabela
+  ordenada
+* **dicionários e glossários digitais**: buscar uma palavra em uma coleção
+  organizada alfabeticamente
+* **jogos**: localizar pontuações, níveis ou itens desbloqueados em tabelas
+  ordenadas
+* **bancos de dados e índices**: estruturas de índice usam ideias semelhantes
+  para reduzir o espaço de busca
+
+Um cenário simples:
+
+```text
+Matrículas ordenadas:
+[1001, 1004, 1010, 1020, 1035, 1042, 1050]
+
+Buscar matrícula 1035:
+em vez de olhar uma por uma, o algoritmo começa pelo meio.
+```
+
+Quanto maior a coleção, mais clara fica a diferença entre olhar elemento por
+elemento e eliminar metade da busca a cada passo.
+
+## Quando a busca binária compensa
+
+Em sistemas reais, ordenar os dados também tem custo.
+Por isso, a busca binária costuma compensar principalmente quando:
+
+* os dados já chegam ordenados
+* a coleção muda pouco
+* muitas buscas serão feitas sobre os mesmos dados
+* o acesso ao elemento do meio é rápido, como em listas indexadas ou vetores
+
+Ela pode não compensar quando:
+
+* a lista é muito pequena
+* os dados mudam o tempo todo
+* seria necessário ordenar novamente antes de quase toda busca
+* a estrutura não permite acesso rápido ao meio
+
+Por isso, a pergunta prática não é apenas “a busca binária é rápida?”.
+A pergunta mais completa é: **vale a pena manter esses dados ordenados para
+ganhar velocidade nas buscas?**
+
 ## Limitações e cuidados
 
 Apesar de eficiente, a busca binária exige atenção:

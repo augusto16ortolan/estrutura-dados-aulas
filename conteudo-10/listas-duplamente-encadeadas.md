@@ -186,11 +186,59 @@ Listas duplamente encadeadas costumam valer a pena quando:
 * inserções e remoções nas extremidades são frequentes
 * o custo extra de memória é aceitável
 
-Exemplos comuns:
+Esses casos aparecem em vários sistemas reais, especialmente quando existe a
+ideia de item anterior e próximo item.
 
-* histórico de navegação
-* playlists com próximo e anterior
-* editores com navegação entre estados
+### Onde listas duplamente encadeadas aparecem na prática
+
+Uma dúvida comum é: se Python já possui `list`, por que estudar lista
+duplamente encadeada?
+
+A resposta é que essa estrutura ajuda a entender problemas em que o sistema
+precisa **andar para frente e para trás**, mantendo ligações entre elementos
+vizinhos.
+
+Alguns cenários típicos são:
+
+* **playlist de músicas**: o usuário pode avançar para a próxima música ou voltar
+  para a anterior
+* **histórico de navegação**: um navegador precisa representar ações de
+  “voltar” e “avançar”
+* **editores de texto ou imagem**: estados anteriores e posteriores podem ser
+  percorridos em uma linha de tempo
+* **carrosséis e galerias**: uma imagem pode apontar para a próxima e para a
+  anterior
+* **listas de tarefas reordenáveis**: itens podem ser movidos sem reconstruir
+  toda a sequência
+* **sistemas de atendimento**: registros podem ser consultados em ordem direta
+  ou inversa
+
+Um exemplo concreto:
+
+```text
+Música anterior ⇄ Música atual ⇄ Próxima música
+```
+
+Nesse tipo de situação, guardar apenas o próximo elemento não é suficiente se o
+sistema também precisa voltar com facilidade.
+
+### Como escolher essa estrutura em um projeto
+
+Uma lista duplamente encadeada costuma ser uma boa escolha quando:
+
+* o sistema faz muitas inserções e remoções nas extremidades
+* a aplicação precisa navegar nos dois sentidos
+* existe uma referência direta para o nodo que será removido ou alterado
+* o custo extra de memória não é um problema
+
+Ela pode não ser a melhor escolha quando:
+
+* o sistema precisa acessar posições pelo índice o tempo todo
+* a busca por elementos é a operação mais frequente
+* o volume de dados é grande e a memória precisa ser economizada
+
+Em resumo, a lista duplamente encadeada é útil quando a aplicação precisa
+representar uma **sequência navegável**, e não apenas armazenar valores.
 
 ### A importância das referências duplas
 

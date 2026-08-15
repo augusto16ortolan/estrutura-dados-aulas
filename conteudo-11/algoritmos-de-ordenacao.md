@@ -41,6 +41,62 @@ A ordenação é importante porque:
 
 Em muitos casos, **ordenar os dados é o primeiro passo antes de processá-los**.
 
+### Onde algoritmos de ordenação aparecem na prática
+
+Os alunos costumam perceber ordenação primeiro como “colocar números em ordem”,
+mas ela aparece em muitos sistemas reais.
+
+Exemplos comuns:
+
+* **lojas virtuais**: ordenar produtos por preço, avaliação, nome, data de
+  cadastro ou relevância
+* **sistemas escolares**: listar alunos por nome, média, frequência ou matrícula
+* **rankings**: organizar jogadores por pontuação, tempo, nível ou número de
+  vitórias
+* **relatórios administrativos**: ordenar vendas por data, valor, cliente ou
+  região
+* **aplicativos de entrega**: ordenar pedidos por horário, distância ou
+  prioridade
+* **bancos de dados**: retornar consultas já organizadas para facilitar leitura e
+  análise
+* **agenda e calendário**: organizar eventos por data e horário
+
+Um exemplo simples:
+
+```text
+Produtos desordenados:
+Notebook R$ 3200, Mouse R$ 80, Teclado R$ 150
+
+Ordenados por preço:
+Mouse R$ 80, Teclado R$ 150, Notebook R$ 3200
+```
+
+Nesse caso, ordenar melhora a experiência do usuário, porque facilita comparar
+opções e tomar decisões.
+
+### Cenários de escolha do algoritmo
+
+Nem todo algoritmo de ordenação é escolhido pelo mesmo motivo.
+Em uma situação real, a escolha depende do tamanho dos dados, da frequência de
+uso e do estado inicial da lista.
+
+Alguns cenários:
+
+* **lista pequena em exercício ou demonstração**: Bubble Sort, Selection Sort e
+  Insertion Sort são bons para aprender a lógica
+* **lista quase ordenada**: Insertion Sort costuma se comportar bem, porque faz
+  poucos deslocamentos
+* **quando se quer reduzir trocas**: Selection Sort pode ser interessante, pois
+  faz no máximo uma troca por posição
+* **listas maiores**: Merge Sort é mais adequado que os algoritmos quadráticos,
+  pois mantém `O(n log n)` no pior caso
+* **dados com elementos repetidos e múltiplos critérios**: estabilidade pode ser
+  importante para preservar a ordem relativa dos itens iguais
+
+Por exemplo, se um sistema ordena boletins por turma e depois por nome, a
+estabilidade ajuda a manter uma ordenação anterior quando os valores do novo
+critério empatam.
+
 ### Algoritmos de ordenação estudados
 
 Existem diversos algoritmos de ordenação, mas neste momento do curso o foco está nos algoritmos **mais simples**, que ajudam a desenvolver o raciocínio lógico.

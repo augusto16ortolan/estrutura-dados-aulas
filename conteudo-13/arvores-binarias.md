@@ -37,6 +37,57 @@ Além disso, árvores servem de base para estruturas mais avançadas estudadas e
 disciplinas posteriores, como árvores de busca, heaps, tries e índices de banco
 de dados.
 
+## Onde árvores binárias aparecem na prática
+
+Árvores binárias são úteis quando os dados possuem uma relação de **hierarquia**,
+**decisão** ou **divisão em partes menores**.
+
+Alguns cenários comuns:
+
+* **árvores de decisão**: cada pergunta leva para um próximo caminho, como em um
+  sistema de diagnóstico ou questionário
+* **expressões matemáticas**: operadores e operandos podem ser representados em
+  formato de árvore
+* **organização de categorias**: uma categoria pode se dividir em subcategorias
+* **buscas eficientes**: árvores binárias de busca organizam valores menores à
+  esquerda e maiores à direita
+* **jogos**: decisões de personagens, escolhas de caminhos e estados possíveis
+  podem ser modelados como árvores
+* **compactação e codificação**: algumas técnicas usam árvores para representar
+  códigos e frequências
+* **bancos de dados e sistemas de arquivos**: estruturas em árvore aparecem em
+  índices e organização hierárquica
+
+Um exemplo de árvore de decisão:
+
+```text
+              Está chovendo?
+              /           \
+            sim           não
+           /                \
+     levar guarda-chuva    sair normal
+```
+
+Nesse caso, cada nodo representa uma pergunta ou decisão, e cada caminho leva a
+uma consequência.
+
+### Exemplos de cenários por tipo de árvore
+
+Nem toda árvore binária é usada da mesma maneira.
+Alguns usos dependem de regras específicas:
+
+* **árvore binária comum**: representa hierarquia ou relacionamento entre nodos,
+  sem exigir ordenação
+* **árvore binária de busca**: acelera buscas quando os valores seguem a regra
+  “menores à esquerda, maiores à direita”
+* **árvores de expressão**: ajudam a avaliar contas como `(2 + 3) * 4`
+* **árvores balanceadas**: mantêm altura controlada para evitar perda de
+  desempenho
+
+Essa distinção é importante: uma árvore binária comum apenas limita cada nodo a
+dois filhos. Ela só se torna uma árvore de busca quando adotamos uma regra de
+ordenação.
+
 ## Terminologia básica
 
 Antes de implementar, vale dominar o vocabulário da estrutura:
