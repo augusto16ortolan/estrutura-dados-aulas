@@ -33,9 +33,8 @@ Exemplos clássicos:
 * índice de busca
 * menus e categorias em sistemas
 
-Além disso, árvores servem de base para estruturas mais avançadas estudadas em
-disciplinas posteriores, como árvores de busca, heaps, tries e índices de banco
-de dados.
+Além disso, árvores servem de base para estruturas mais avançadas, como árvores
+de busca, heaps, tries e índices de banco de dados.
 
 ## Onde árvores binárias aparecem na prática
 
@@ -229,8 +228,8 @@ Exemplo:
 10, 5, 15, 2, 7, 20
 ```
 
-Esse tipo de percurso costuma ser implementado com **fila**, o que cria uma boa
-ponte entre os conteúdos da disciplina.
+Esse tipo de percurso costuma ser implementado com **fila**, conectando este
+tema aos conteúdos anteriores sobre estruturas lineares.
 
 ## Exemplo de percurso com código
 
@@ -294,10 +293,10 @@ Quando ela está mais equilibrada, a navegação tende a ser mais eficiente.
 Esses detalhes abrem caminho para estudos futuros, como árvores binárias de
 busca e árvores balanceadas.
 
-## Relação com o restante da disciplina
+## Relação com os conteúdos anteriores
 
 Árvores binárias aparecem naturalmente depois de listas encadeadas, ordenação e
-busca, porque ampliam a forma como organizamos dados:
+busca, porque ampliam a forma como os dados podem ser organizados:
 
 * saímos da ideia de sequência
 * passamos para a ideia de hierarquia
@@ -311,6 +310,6 @@ das estruturas de dados.
 
 Árvores binárias são importantes porque mostram que nem todo problema de
 organização de dados cabe em uma sequência linear. Ao introduzir hierarquia,
-subárvores e percursos, elas ampliam bastante o repertório do aluno e preparam
-o terreno para estruturas mais avançadas, algoritmos de busca mais eficientes e
-modelagens mais próximas de muitos problemas reais.
+subárvores e percursos, elas ampliam o repertório de estruturas de dados e
+preparam o terreno para estruturas mais avançadas, algoritmos de busca mais
+eficientes e modelagens mais próximas de muitos problemas reais.

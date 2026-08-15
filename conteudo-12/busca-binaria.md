@@ -84,7 +84,7 @@ Esse exemplo mostra por que a busca binária reduz tão rápido o espaço de bus
 
 ## Implementação iterativa em Python
 
-Uma implementação simples e bastante didática é:
+Uma implementação simples e direta é:
 
 ```python
 def busca_binaria(lista, alvo):
@@ -154,7 +154,8 @@ indice = busca_binaria_recursiva(numeros, 16, 0, len(numeros) - 1)
 ```
 
 As versões iterativa e recursiva resolvem o mesmo problema. A escolha entre
-elas depende do objetivo didático, clareza do código e restrições do contexto.
+elas depende da clareza desejada, do estilo de implementação e das restrições do
+contexto.
 
 ## Comparação com a busca linear
 

@@ -43,8 +43,8 @@ Em muitos casos, **ordenar os dados é o primeiro passo antes de processá-los**
 
 ### Onde algoritmos de ordenação aparecem na prática
 
-Os alunos costumam perceber ordenação primeiro como “colocar números em ordem”,
-mas ela aparece em muitos sistemas reais.
+Em um primeiro contato, ordenação pode parecer apenas “colocar números em
+ordem”, mas ela aparece em muitos sistemas reais.
 
 Exemplos comuns:
 
@@ -99,7 +99,8 @@ critério empatam.
 
 ### Algoritmos de ordenação estudados
 
-Existem diversos algoritmos de ordenação, mas neste momento do curso o foco está nos algoritmos **mais simples**, que ajudam a desenvolver o raciocínio lógico.
+Existem diversos algoritmos de ordenação, mas neste conteúdo o foco está nos
+algoritmos **mais simples**, que ajudam a desenvolver o raciocínio lógico.
 
 Os principais algoritmos apresentados aqui são:
 
@@ -115,11 +116,11 @@ eficiente baseada em **divisão e conquista**.
 
 Em outras palavras:
 
-* **Bubble Sort, Selection Sort e Insertion Sort** são ótimos para ensino e raciocínio inicial
+* **Bubble Sort, Selection Sort e Insertion Sort** são bons para entender o raciocínio inicial
 * **Merge Sort** é importante para mostrar como surgem algoritmos mais sofisticados e eficientes
 
-Mesmo que nem todos sejam trabalhados com o mesmo nível de profundidade em aula,
-é valioso que o aluno conheça o panorama.
+Mesmo que nem todos sejam explorados com o mesmo nível de profundidade, é
+valioso conhecer esse panorama.
 
 ### Ideia geral dos algoritmos de ordenação
 
@@ -369,7 +370,7 @@ apresentados antes.
 
 * a implementação é um pouco mais abstrata para iniciantes
 * costuma exigir memória extra para a intercalação
-* pode ser menos intuitivo em uma primeira aula do que os algoritmos mais simples
+* pode ser menos intuitivo em um primeiro contato do que os algoritmos mais simples
 
 ### Comparação de desempenho
 
@@ -417,15 +418,23 @@ De forma geral:
 
 Todos resolvem o mesmo problema, mas de formas diferentes.
 
-### Sugestão pedagógica de leitura do tema
+### Como estudar estes algoritmos
 
-Em uma sequência de aula, é perfeitamente razoável:
+Uma boa forma de estudar ordenação é começar pelas estratégias mais concretas e
+depois avançar para uma abordagem mais eficiente.
 
-* trabalhar **Bubble Sort, Selection Sort e Insertion Sort** como núcleo principal
-* apresentar **Merge Sort** como expansão de repertório e ponte para algoritmos mais eficientes
+Primeiro, observe com atenção o que acontece em:
 
-Assim, o aluno entende tanto as estratégias mais concretas quanto a transição
-para soluções mais sofisticadas.
+* **Bubble Sort**, que compara vizinhos
+* **Selection Sort**, que escolhe o menor elemento
+* **Insertion Sort**, que insere cada valor na posição correta
+
+Depois, compare essas ideias com o **Merge Sort**, que muda a estratégia:
+em vez de resolver tudo com trocas locais, ele divide a lista em partes menores
+e depois reconstrói o resultado ordenado.
+
+Essa comparação ajuda a perceber a transição entre algoritmos simples de
+entender e algoritmos mais eficientes para listas maiores.
 
 ### Relação com estruturas de dados
 
@@ -435,15 +444,14 @@ Os algoritmos de ordenação dependem diretamente da estrutura usada para armaze
 * listas encadeadas
 
 Por isso, entender como cada estrutura armazena e acessa seus elementos ajuda a
-compreender o custo real de ordenar dados. Em Python, os exemplos desta aula
+compreender o custo real de ordenar dados. Em Python, os exemplos deste conteúdo
 usam listas, que permitem acesso direto por índice.
 
 ### Conclusão
 
 Os algoritmos de ordenação são fundamentais para organizar dados e permitir
 operações mais eficientes sobre eles. Ao estudar Bubble Sort, Selection Sort,
-Insertion Sort e Merge Sort, o aluno desenvolve o raciocínio necessário para
-comparar estratégias, perceber custos diferentes e entender como a ideia de
-divisão e conquista amplia o repertório algorítmico. Esse conhecimento serve
-como base para o estudo de algoritmos ainda mais eficientes e para a
-compreensão de conceitos avançados da computação.
+Insertion Sort e Merge Sort, é possível comparar estratégias, perceber custos
+diferentes e entender como a ideia de divisão e conquista amplia o repertório
+algorítmico. Esse conhecimento serve como base para o estudo de algoritmos ainda
+mais eficientes e para a compreensão de conceitos avançados da computação.
