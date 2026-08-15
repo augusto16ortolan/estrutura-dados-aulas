@@ -46,8 +46,8 @@ Antes de implementar, vale dominar o vocabulário da estrutura:
 * **filho**: nodo apontado por um nodo pai
 * **folha**: nodo sem filhos
 * **subárvore**: qualquer parte da árvore que também forma uma árvore
-* **nível**: distância em relação à raiz
-* **altura**: maior caminho entre a raiz e uma folha
+* **nível**: distância em relação à raiz; neste material, a raiz está no nível 0
+* **altura**: maior número de arestas entre um nodo e uma folha; por essa convenção, uma árvore com apenas a raiz tem altura 0
 
 Exemplo visual:
 
@@ -64,15 +64,14 @@ Nesse caso:
 * `A` é a raiz
 * `B` e `C` são filhos de `A`
 * `D`, `E` e `F` são folhas
-* a altura da árvore depende da convenção adotada, mas normalmente é medida
-  pelo maior número de arestas ou níveis até uma folha
+* usando a convenção deste material, a altura da árvore é 2, pois o maior caminho da raiz até uma folha tem duas arestas
 
 ### Tipos de árvore binária que vale conhecer
 
 Mesmo em uma introdução, já é útil ouvir alguns nomes recorrentes:
 
 * **árvore binária cheia**: cada nodo tem 0 ou 2 filhos
-* **árvore binária completa**: níveis preenchidos da esquerda para a direita, com poucas lacunas no último nível
+* **árvore binária completa**: todos os níveis, exceto talvez o último, estão totalmente preenchidos; no último nível, os nodos aparecem da esquerda para a direita, sem lacunas no meio
 * **árvore binária balanceada**: mantém a altura mais controlada
 * **árvore binária de busca**: organiza os valores com uma regra de comparação
 
@@ -89,6 +88,7 @@ Em resumo:
 
 * **listas** organizam dados em sequência
 * **árvores** organizam dados em hierarquia
+* **árvores binárias de busca** organizam os valores por comparação, mas uma árvore binária comum não precisa estar ordenada
 
 Essa diferença é importante porque muitos problemas do mundo real são mais bem
 representados por relações hierárquicas do que por relações estritamente
@@ -216,6 +216,11 @@ Saída:
 
 Isso mostra como a estrutura da árvore influencia diretamente a ordem em que os
 valores são acessados.
+
+Nesse exemplo específico, a saída ficou crescente porque a árvore respeita a
+regra de uma árvore binária de busca: valores menores ficam à esquerda e valores
+maiores ficam à direita. Em uma árvore binária comum, o percurso em ordem ainda
+funciona, mas não necessariamente produz valores ordenados.
 
 ## Eficiência e observações iniciais
 

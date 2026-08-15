@@ -147,6 +147,12 @@ def busca_binaria_recursiva(lista, alvo, inicio, fim):
     return busca_binaria_recursiva(lista, alvo, meio + 1, fim)
 ```
 
+Para buscar na lista inteira, a chamada inicial deve informar os limites:
+
+```python
+indice = busca_binaria_recursiva(numeros, 16, 0, len(numeros) - 1)
+```
+
 As versões iterativa e recursiva resolvem o mesmo problema. A escolha entre
 elas depende do objetivo didático, clareza do código e restrições do contexto.
 
@@ -160,8 +166,8 @@ metade.
 
 ### Complexidade
 
-* **Busca linear**: `O(n)`
-* **Busca binária**: `O(log n)`
+* **Busca linear**: `O(n)` no pior caso
+* **Busca binária**: `O(log n)` no pior caso
 
 Isso significa que, em coleções grandes e ordenadas, a busca binária tende a
 ser muito mais eficiente.
@@ -169,7 +175,7 @@ ser muito mais eficiente.
 Exemplo intuitivo:
 
 * com 1.000 elementos, a busca linear pode precisar olhar muitos deles
-* a busca binária reduz a faixa rapidamente em poucas comparações
+* a busca binária reduz a faixa rapidamente, ficando em torno de 10 comparações no pior caso
 
 ### Importante: a estrutura também influencia
 

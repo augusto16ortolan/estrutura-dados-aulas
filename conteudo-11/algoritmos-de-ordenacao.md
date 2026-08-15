@@ -71,7 +71,7 @@ Apesar das diferenças, todos os algoritmos de ordenação:
 
 * comparam elementos
 * verificam se estão na ordem correta
-* trocam elementos de posição quando necessário
+* trocam, deslocam ou combinam elementos quando necessário
 * repetem o processo até que a lista esteja ordenada
 
 O que muda entre eles é **a estratégia usada para fazer isso**.
@@ -307,7 +307,7 @@ apresentados antes.
 
 * desempenho melhor em comparação com Bubble, Selection e Insertion em muitos cenários
 * estratégia elegante e muito importante na formação algorítmica
-* pode ser estável
+* na implementação apresentada, é estável
 
 **Limitações:**
 
@@ -326,9 +326,9 @@ De forma introdutória, podemos resumir assim:
 
 Na análise assintótica clássica:
 
-* Bubble Sort → `O(n²)` no pior caso
-* Selection Sort → `O(n²)` no pior caso
-* Insertion Sort → `O(n²)` no pior caso, mas pode se aproximar de `O(n)` em cenários favoráveis
+* Bubble Sort → `O(n²)` no pior caso; com a otimização de parada antecipada, pode chegar a `O(n)` quando a lista já está ordenada
+* Selection Sort → `O(n²)` no pior caso e também no melhor caso, pois continua procurando o menor elemento no restante da lista
+* Insertion Sort → `O(n²)` no pior caso, mas chega a `O(n)` quando a lista já está ordenada
 * Merge Sort → `O(n log n)` no pior caso
 
 ### Estabilidade de ordenação
@@ -343,10 +343,10 @@ Isso pode ser importante quando:
 
 De forma geral:
 
-* Bubble Sort pode ser estável
-* Insertion Sort pode ser estável
+* Bubble Sort é estável na implementação apresentada, porque só troca quando o elemento da esquerda é maior que o da direita
+* Insertion Sort é estável na implementação apresentada, porque só desloca elementos maiores que o valor atual
 * Selection Sort geralmente não é estável na forma mais simples
-* Merge Sort pode ser estável, dependendo da implementação da intercalação
+* Merge Sort é estável na implementação apresentada, porque em caso de empate escolhe primeiro o elemento da lista da esquerda
 
 ### Comparação conceitual entre os algoritmos
 
@@ -378,7 +378,9 @@ Os algoritmos de ordenação dependem diretamente da estrutura usada para armaze
 * listas baseadas em vetor
 * listas encadeadas
 
-Por isso, entender bem pilhas, filas e listas é essencial para compreender ordenação.
+Por isso, entender como cada estrutura armazena e acessa seus elementos ajuda a
+compreender o custo real de ordenar dados. Em Python, os exemplos desta aula
+usam listas, que permitem acesso direto por índice.
 
 ### Conclusão
 

@@ -1,11 +1,14 @@
-# Exercícios Práticos — Algoritmos de Ordenação (Bubble, Selection, Insertion)
+# Exercícios Práticos — Algoritmos de Ordenação
 
 **Nível:** 2º semestre (fundamentos)  
-**Objetivo:** entender o que é ordenar, por que ordenar é importante e praticar os 3 algoritmos básicos:
+**Objetivo:** entender o que é ordenar, por que ordenar é importante, praticar os
+3 algoritmos básicos e reconhecer o Merge Sort como uma estratégia mais
+eficiente baseada em divisão e conquista:
 
 - Bubble Sort
 - Selection Sort
 - Insertion Sort
+- Merge Sort (desafio opcional)
 
 ---
 
@@ -348,5 +351,33 @@ Com o que você mediu nos exercícios de contagem:
   - qual algoritmo fez mais trocas em uma lista invertida?
   - qual algoritmo foi melhor em uma lista quase ordenada?
   - o que você aprendeu sobre comparar estratégias?
+
+---
+
+## Exercício 27 — Entendendo o Merge Sort (opcional)
+
+Em comentário, explique com suas palavras:
+
+- por que listas com 1 elemento já estão ordenadas
+- o que significa dividir a lista em metades
+- qual é o papel da etapa de intercalação (`merge`)
+
+---
+
+## Exercício 28 — Implementar `merge_sort` (desafio)
+
+Implemente `merge_sort(lista)` usando duas funções:
+
+- `merge_sort(lista)`, que divide a lista e chama a si mesma
+- `merge(esquerda, direita)`, que intercala duas listas já ordenadas
+
+Teste com:
+
+- `[8, 3, 5, 1, 7, 2]`
+- `[4, 1, 3, 2]`
+- `[]`
+- `[5]`
+
+Confira se a função retorna uma nova lista ordenada.
 
 ---
