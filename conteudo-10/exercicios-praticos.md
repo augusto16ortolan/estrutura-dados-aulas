@@ -11,3 +11,6 @@ description: >-
 Nesta seção, você irá aplicar, na prática, os conceitos estudados ao longo da disciplina. Os exercícios têm como objetivo reforçar o entendimento das estruturas de dados, da lógica dos algoritmos e da organização do código, estimulando o raciocínio e a análise das soluções desenvolvidas. Acesse os exercícios abaixo e teste os seus conhecimentos adquiridos em aula.
 
 {% file src="../.gitbook/assets/exercicios_praticos_conteudo_10.md" %}
+
+{% file src="../.gitbook/assets/exercicio_catalogo_filmes_lde.md" %}
+

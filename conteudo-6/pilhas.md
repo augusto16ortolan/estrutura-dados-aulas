@@ -27,7 +27,7 @@ Uma **pilha** (stack) é um **Tipo Abstrato de Dados (TAD)** que define **compor
 * **“Desfazer” no computador** (Ctrl+Z): quando você erra, o computador desfaz primeiro o que você acabou de fazer. Ele volta passo a passo na ordem inversa do que aconteceu.
 * **Botão “Voltar” do navegador**: você vai clicando e abrindo páginas. Quando aperta “voltar”, ele volta para a página anterior, depois para a anterior dela, e assim por diante — como se estivesse desfazendo o caminho ao contrário.
 
-<figure><img src="../.gitbook/assets/image (22).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (21).png" alt="" width="563"><figcaption></figcaption></figure>
 
 ### Estado e invariantes
 
@@ -69,15 +69,13 @@ Em teoria, a gente descreve operações com:
 
 ### Complexidade das operações
 
-Quando a pilha é implementada de forma adequada, as operações principais
-costumam ter custo constante:
+Quando a pilha é implementada de forma adequada, as operações principais costumam ter custo constante:
 
 * `push()` → `O(1)`
 * `pop()` → `O(1)`
 * `peek()` → `O(1)`
 
-Isso acontece porque todas agem sobre o topo, sem precisar percorrer a
-estrutura inteira.
+Isso acontece porque todas agem sobre o topo, sem precisar percorrer a estrutura inteira.
 
 ### Possíveis implementações
 
@@ -87,8 +85,7 @@ Uma pilha pode ser implementada de diferentes formas:
 * com lista encadeada
 * com vetor em outras linguagens
 
-Independentemente da implementação, a estrutura continua sendo pilha se
-mantiver a regra LIFO e o acesso controlado pelo topo.
+Independentemente da implementação, a estrutura continua sendo pilha se mantiver a regra LIFO e o acesso controlado pelo topo.
 
 ### Exemplo de classe Pilha em Python
 
@@ -144,8 +141,7 @@ Além dos exemplos do cotidiano, pilhas aparecem muito em problemas reais:
 * mecanismo de desfazer e refazer
 * algoritmos de backtracking
 
-Em outras palavras, pilha aparece sempre que precisamos “voltar um passo” ou
-recuperar a última decisão tomada.
+Em outras palavras, pilha aparece sempre que precisamos “voltar um passo” ou recuperar a última decisão tomada.
 
 ### Limitações e cuidados
 
