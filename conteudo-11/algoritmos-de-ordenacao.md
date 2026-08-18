@@ -122,6 +122,29 @@ Em outras palavras:
 Mesmo que nem todos sejam explorados com o mesmo nível de profundidade, é
 valioso conhecer esse panorama.
 
+### Analogias da vida real
+
+Para entender melhor a diferença entre os algoritmos, ajuda comparar cada um
+com uma situação do dia a dia.
+
+<figure><img src="../.gitbook/assets/algoritmos-ordenacao-analogias.png" alt="Quatro analogias visuais para algoritmos de ordenação: pessoas em uma fila, cartas sobre uma mesa, cartas na mão e pilhas de provas."><figcaption>Analogias visuais para Bubble Sort, Selection Sort, Insertion Sort e Merge Sort.</figcaption></figure>
+
+* **Bubble Sort → pessoas trocando de lugar em uma fila.** Você compara duas
+  pessoas vizinhas pela altura e, se estiverem na ordem errada, elas trocam de
+  posição. O processo se repete até a fila ficar ordenada.
+* **Selection Sort → escolher sempre a menor carta de uma mesa.** Você olha
+  todas as cartas disponíveis, encontra a menor e coloca na primeira posição.
+  Depois procura a menor entre as que sobraram.
+* **Insertion Sort → organizar cartas na mão.** Você pega uma nova carta e
+  encaixa no lugar correto entre as cartas que já estão organizadas. Essa é uma
+  das analogias mais naturais para esse algoritmo.
+* **Merge Sort → organizar provas dividindo a pilha.** Você divide uma pilha
+  grande em pilhas menores, organiza cada uma separadamente e depois junta as
+  pilhas já ordenadas.
+
+Essas analogias não substituem o código, mas ajudam a visualizar a estratégia de
+cada algoritmo antes de analisar os laços, comparações e trocas.
+
 ### Ideia geral dos algoritmos de ordenação
 
 Apesar das diferenças, todos os algoritmos de ordenação:
@@ -159,7 +182,7 @@ A cada passagem completa pela lista, o maior elemento “sobe” para o final, c
 
 #### Exemplo teórico
 
-Imagine uma fila de pessoas organizada por altura, mas fora de ordem.
+Imagine uma fila de pessoas que precisa ser organizada por altura.
 
 * O algoritmo compara duas pessoas lado a lado.
 * Se a pessoa da esquerda for mais alta que a da direita, elas trocam de lugar.
@@ -197,11 +220,11 @@ Depois, repete o processo com o restante da lista, ignorando a parte já ordenad
 
 #### Exemplo teórico
 
-Imagine uma prateleira com livros fora de ordem pelo tamanho.
+Imagine cartas espalhadas sobre uma mesa.
 
-* Você olha todos os livros e encontra o menor.
-* Coloca esse livro na primeira posição.
-* Depois olha apenas os livros restantes e encontra o próximo menor.
+* Você olha todas as cartas disponíveis e encontra a menor.
+* Coloca essa carta na primeira posição.
+* Depois olha apenas as cartas restantes e encontra a próxima menor.
 * Repete o processo até organizar tudo.
 
 O algoritmo sempre escolhe **quem merece ocupar a próxima posição correta**.
