@@ -44,6 +44,21 @@ O processo funciona assim:
 
 Em cada etapa, metade dos elementos deixa de ser considerada.
 
+## Analogia da vida real
+
+Uma boa forma de imaginar a busca binária é pensar em um **dicionário físico**.
+Se você quer encontrar uma palavra, normalmente não começa pela primeira página.
+Você abre o dicionário mais ou menos no meio, observa se a palavra procurada
+viria antes ou depois daquela página e descarta uma grande parte do livro.
+
+Outro exemplo é o jogo de adivinhar um número. Se o número está entre 1 e 100,
+faz sentido perguntar primeiro se ele é maior ou menor que 50. A resposta já
+elimina metade das possibilidades. Depois você repete a mesma lógica na metade
+que sobrou.
+
+Essa é a essência da busca binária: **usar a ordem dos dados para tomar decisões
+que eliminam muitas possibilidades de uma vez**.
+
 ## Exemplo passo a passo
 
 Considere a lista:
@@ -52,23 +67,23 @@ Considere a lista:
 [3, 7, 11, 18, 21, 29, 35, 42, 50]
 ```
 
-Vamos buscar o valor `21`.
+### Caso 1: buscando o valor `21`
 
-### Passo 1
-
-Elemento do meio: `21`
+O elemento do meio da lista é `21`.
 
 Como o valor do meio já é o procurado, a busca termina imediatamente.
 
-Agora imagine a busca pelo valor `35`.
+### Caso 2: buscando o valor `35`
 
-### Passo 1
+Agora vamos usar a mesma lista para buscar o valor `35`.
+
+**Primeira comparação**
 
 Elemento do meio: `21`
 
 Como `35 > 21`, descartamos toda a metade esquerda.
 
-### Passo 2
+**Segunda comparação**
 
 Nova faixa:
 
@@ -81,6 +96,21 @@ Elemento do meio da nova faixa: `35`
 Valor encontrado.
 
 Esse exemplo mostra por que a busca binária reduz tão rápido o espaço de busca.
+
+### Rastreando as variáveis
+
+No código, a busca não cria uma nova lista a cada passo. Ela controla apenas os
+limites da faixa que ainda pode conter o valor procurado.
+
+Para buscar o valor `35`, o comportamento pode ser representado assim:
+
+| Passo | `inicio` | `fim` | `meio` | `lista[meio]` | Decisão |
+| --- | ---: | ---: | ---: | ---: | --- |
+| 1 | 0 | 8 | 4 | 21 | `35 > 21`, então a busca continua à direita |
+| 2 | 5 | 8 | 6 | 35 | valor encontrado |
+
+Observe que, depois do primeiro passo, `inicio` passa a valer `5`. Isso significa
+que os índices `0`, `1`, `2`, `3` e `4` deixam de fazer parte da busca.
 
 ## Implementação iterativa em Python
 
@@ -117,6 +147,56 @@ Saída:
 ```text
 4
 ```
+
+### Como ler esse código
+
+As variáveis principais são:
+
+* `inicio`: primeiro índice da faixa que ainda está sendo analisada
+* `fim`: último índice da faixa que ainda está sendo analisada
+* `meio`: índice central entre `inicio` e `fim`
+* `alvo`: valor que queremos encontrar
+
+O laço `while inicio <= fim` significa: enquanto ainda existir uma faixa válida
+para procurar, continue buscando. Se `inicio` passar de `fim`, a faixa acabou e o
+valor não foi encontrado.
+
+Dentro do laço, existem três possibilidades:
+
+* se `lista[meio] == alvo`, o valor foi encontrado e o índice é retornado
+* se `alvo < lista[meio]`, o valor só pode estar à esquerda, então `fim` diminui
+* se `alvo > lista[meio]`, o valor só pode estar à direita, então `inicio` aumenta
+
+O `return -1` no final indica que a busca terminou sem encontrar o valor.
+
+### Como testar
+
+Um bom teste precisa verificar mais de uma situação:
+
+* valor no meio da lista
+* valor no início
+* valor no fim
+* valor ausente
+* lista vazia
+
+Exemplo:
+
+```python
+testes = [
+    ([2, 5, 8, 12, 16, 23, 38], 16, 4),
+    ([2, 5, 8, 12, 16, 23, 38], 2, 0),
+    ([2, 5, 8, 12, 16, 23, 38], 38, 6),
+    ([2, 5, 8, 12, 16, 23, 38], 99, -1),
+    ([], 10, -1),
+]
+
+for lista, alvo, esperado in testes:
+    resultado = busca_binaria(lista, alvo)
+    print(lista, alvo, resultado == esperado)
+```
+
+Se todos os resultados impressos forem `True`, a função passou nesses casos de
+teste.
 
 ### Invariante da busca
 
@@ -156,6 +236,19 @@ indice = busca_binaria_recursiva(numeros, 16, 0, len(numeros) - 1)
 As versões iterativa e recursiva resolvem o mesmo problema. A escolha entre
 elas depende da clareza desejada, do estilo de implementação e das restrições do
 contexto.
+
+### Como ler a versão recursiva
+
+Na versão recursiva, cada chamada resolve uma faixa menor da lista.
+
+* `inicio > fim` é o caso de parada para valor não encontrado
+* `lista[meio] == alvo` é o caso de parada para valor encontrado
+* quando o alvo é menor que o meio, a próxima chamada usa a metade esquerda
+* quando o alvo é maior que o meio, a próxima chamada usa a metade direita
+
+A diferença em relação à versão iterativa é apenas a forma de repetição. Na
+versão iterativa, a repetição acontece com `while`. Na versão recursiva, acontece
+por meio de novas chamadas da própria função.
 
 ## Comparação com a busca linear
 
@@ -273,6 +366,19 @@ Se o problema exigir isso, o algoritmo precisa ser adaptado.
 
 Outro cuidado importante é entender que a busca binária não "organiza" os
 dados; ela apenas se beneficia de uma ordenação já existente.
+
+## Erros comuns ao implementar
+
+Alguns erros aparecem com frequência quando a busca binária é implementada pela
+primeira vez:
+
+* usar busca binária em uma lista desordenada
+* escrever `while inicio < fim` e deixar de testar corretamente o último elemento
+* atualizar `inicio = meio` ou `fim = meio`, causando risco de laço infinito
+* esquecer de usar `meio - 1` e `meio + 1` ao descartar uma metade
+* esperar que a busca encontre sempre a primeira ocorrência em listas com valores repetidos
+
+Esses detalhes parecem pequenos, mas mudam o comportamento do algoritmo.
 
 ## Relação com ordenação
 

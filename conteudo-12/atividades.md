@@ -18,3 +18,9 @@ description: >-
 6. Qual é a diferença de comportamento entre busca linear e busca binária?
 7. Por que dizemos que a complexidade da busca binária é `O(log n)`?
 8. Em que tipos de situação prática vale a pena ordenar os dados para depois usar busca binária?
+9. Use uma analogia da vida real para explicar a busca binária, como um dicionário, uma agenda ou um jogo de adivinhação.
+10. No código da busca binária, qual é a função das variáveis `inicio`, `fim` e `meio`?
+11. Por que o laço usa a condição `inicio <= fim`?
+12. O que pode acontecer se atualizarmos `inicio = meio` ou `fim = meio` em vez de usar `meio + 1` e `meio - 1`?
+13. Se uma lista tiver valores repetidos, a busca binária sempre retorna a primeira ocorrência? Explique.
+14. Por que a busca binária combina melhor com listas indexadas ou vetores do que com listas encadeadas?
